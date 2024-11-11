@@ -1,0 +1,38 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:../sql/paggo.sqlite3"
+}
+
+// generator
+generator client {
+  provider             = "prisma-client-py"
+  recursive_type_depth = 5
+}
+
+// data models
+model User {
+  id        Int        @id @default(autoincrement())
+  email     String     @unique
+  password  String
+  documents Document[]
+}
+
+model Document {
+  id             Int      @id @default(autoincrement())
+  userId         Int
+  user           User     @relation(fields: [userId], references: [id])
+  filename       String
+  extractedText  String
+  llmExplanation String?
+  uploadedAt     DateTime @updatedAt
+  queries        Query[]
+}
+
+model Query {
+  id         Int      @id @default(autoincrement())
+  documentId Int
+  document   Document @relation(fields: [documentId], references: [id])
+  query      String
+  response   String
+  createdAt  DateTime @default(now())
+}
