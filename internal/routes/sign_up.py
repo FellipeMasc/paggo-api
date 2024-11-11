@@ -15,7 +15,6 @@ signup_router = APIRouter(
 
 @signup_router.post('/signup', summary="Create new user", response_model=UserOut)
 async def create_user(data: UserAuth, db=Depends(get_db)):
-    # querying database to check if user already exist
     user = await db.user.find_unique(
         where={
             "email": data.email

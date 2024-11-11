@@ -1,4 +1,4 @@
-from fastapi import FastAPI, status, HTTPException, Depends, APIRouter
+from fastapi import FastAPI, Response, status, HTTPException, Depends, APIRouter
 from fastapi.security import OAuth2PasswordBearer
 
 from deps import get_db
@@ -39,4 +39,4 @@ async def get_llm(data: QueryBase, user: User = Depends(get_current_user), db=De
         }
     )
     
-    return {"message": "Hello World"}
+    return Response(status=200, content="Query posted successfully")

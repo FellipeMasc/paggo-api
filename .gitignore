@@ -5,4 +5,4 @@
 *migrations
 *.sqlite3
 .env
-*local_s3/*.*
+*.png
