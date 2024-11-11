@@ -12,7 +12,7 @@ def explain_text(text: str) -> str:
     [
         (
             "system",
-            "You are a assistant that explain a long text that was extracted from a document using ocr.",
+            "You are a assistant that explain a long text that was extracted from a invoice image document using ocr.",
         ),
         ("human", "{text}"),
     ]
@@ -32,7 +32,7 @@ def query_to_llm(query: str, text: str, llm_explanation : str) -> str:
     [
         (
             "system",
-            "You are a assistant that explain this query {query} given that this query is about this explanation {llm_explanation}, focus only in the query.",
+            "You are a assistant that explain this query {query} given that this query is about this explanation {llm_explanation} of a invoice image document, focus only in the query.",
         ),
         ("human", "{query}"),
     ]
