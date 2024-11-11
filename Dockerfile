@@ -1,21 +1,24 @@
-# Use the official Ubuntu 22.04 as a base image
-FROM ubuntu:22.04
+FROM python:3.9-slim
 
-# Set the working directory
-WORKDIR /home/lipemask/api
+# ENV OPENAI_API_KEY sk-1234567890
 
-# Update and install any necessary packages
+WORKDIR /app/api
+
 RUN apt-get update && apt-get install -y \
-	# Add any required packages here
-	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/*
+	build-essential \
+	tesseract-ocr-por \
+	cmake \
+	git \
+	libgtk2.0-dev \
+	pkg-config \
+	libavcodec-dev \
+	libavformat-dev \
+	libswscale-dev 
 
-# Copy the contents of the current directory to the working directory
-COPY . /home/lipemask/api
+COPY . ./
 
-# Set the default command to run when the container starts
-CMD ["bash"]
-
-RUN apt install -y python3-pip
-RUN apt install tessercat-ocr-por
 RUN pip install -r requirements.txt
+RUN prisma generate
+RUN prisma migrate dev --name "init"
+
+CMD ["uvicorn", "main:app", "--host","0.0.0.0", "--port", "8000"]

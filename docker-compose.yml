@@ -1,11 +1,9 @@
 version: '3.4'
 services:
   app:
-    image: python:3.7
-    command: python -m http.server 8000
-    build: Dockerfile
-    volumes:
-      - ./app:/app
-    working_dir: /app
+    image: python:3.9
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8000:8000"
