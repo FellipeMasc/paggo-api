@@ -1,10 +1,14 @@
 from fastapi import FastAPI
 from internal.main import api_router
 from fastapi.middleware.cors import CORSMiddleware
+import os
 
 origins = [
     "http://localhost:5173",
 ]
+
+local_s3_path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'local_s3'))
+os.makedirs(local_s3_path, exist_ok=True)
 
 app = FastAPI()
 
