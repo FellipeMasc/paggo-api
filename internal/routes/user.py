@@ -73,7 +73,6 @@ async def download_llm_document(document_id: int, user: User = Depends(get_curre
         raise HTTPException(status_code=403, detail="You are not authorized to view this document")
     
     file_name = "user_id_"+str(user.id)+"_document_id_"+str(document.id)+"_"+document.filename
-    media_type = "application/pdf" if document.filename.endswith(".pdf") else "image/png"
     #get from s3
     file = request_file_from_s3(file_name)
     
