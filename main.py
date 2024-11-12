@@ -5,7 +5,7 @@ import os
 
 origins = [
     "http://localhost:5173",
-    "https://paggo-hnclvurgf-fellipes-projects-3dc1e81e.vercel.app"
+    "https://paggo-hnclvurgf-fellipes-projects-3dc1e81e.vercel.app",
     "https://paggo-app.vercel.app/"
 ]
 
