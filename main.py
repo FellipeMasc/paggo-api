@@ -5,6 +5,7 @@ import os
 
 origins = [
     "http://localhost:5173",
+    "https://paggo-hnclvurgf-fellipes-projects-3dc1e81e.vercel.app"
 ]
 
 local_s3_path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'local_s3'))
