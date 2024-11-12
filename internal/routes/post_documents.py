@@ -34,4 +34,4 @@ async def post_documents(file : UploadFile ,user: User = Depends(get_current_use
     )
     save_file_to_s3(file_bytes, "user_id_"+str(user.id)+"_document_id_"+str(document.id)+"_"+filename)
     
-    return Response(status=200, content="Document uploaded successfully")
+    return Response(status_code=200, content="Document uploaded successfully")

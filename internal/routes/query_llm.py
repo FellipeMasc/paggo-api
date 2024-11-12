@@ -39,4 +39,4 @@ async def get_llm(data: QueryBase, user: User = Depends(get_current_user), db=De
         }
     )
     
-    return Response(status=200, content="Query posted successfully")
+    return Response(status_code=200, content="Query posted successfully")
